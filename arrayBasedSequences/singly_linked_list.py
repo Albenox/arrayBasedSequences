@@ -37,3 +37,51 @@ class SinglyLinkedList:
             current = current.next
 
         print(" -> None")
+
+    def build_list_forward(self, values):
+        # Builds the list in the same order as the values given
+        for value in values:
+            new_node = Node(value)
+
+            # If the list is empty, the new node becomes both head and tail
+            if self.is_empty():
+                self.head = new_node
+                self.tail = new_node
+
+            # Otherwise, attach the new node after the current tail
+            else:
+                self.tail.next = new_node
+                self.tail = new_node
+
+            self.count += 1
+
+    def build_list_backward(self, values):
+        # Builds the list in reverse order from the values given
+        for value in values:
+            new_node = Node(value)
+
+            # If the list is empty, the new node becomes both head and tail
+            if self.is_empty():
+                self.head = new_node
+                self.tail = new_node
+
+            # Otherwise, attach the new node before the current head
+            else:
+                new_node.next = self.head
+                self.head = new_node
+
+            self.count += 1
+
+
+# Temporary test code
+if __name__ == "__main__":
+    my_list = SinglyLinkedList()
+
+    print("---- Build a forward list ----")
+    my_list.build_list_forward([10, 20, 30, 40, 50])
+    my_list.display()
+
+    print("---- Build a backward list ----")
+    my_list = SinglyLinkedList()
+    my_list.build_list_backward([10, 20, 30, 40, 50])
+    my_list.display()
