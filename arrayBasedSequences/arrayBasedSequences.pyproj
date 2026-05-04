@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="infix_converter.py" />
     <Compile Include="postfix_evaluator.py" />
     <Compile Include="stack.py" />
   </ItemGroup>
