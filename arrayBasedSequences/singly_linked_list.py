@@ -133,23 +133,71 @@ class SinglyLinkedList:
         else:
             current.next = current.next.next
             self.count -= 1
+    
+    def remove_all(self, value):
+        # Removes all nodes that contain the given value
+
+        # First, remove matching nodes from the front
+        while not self.is_empty() and self.head.data == value:
+            self.delete_first()
+
+        # If the list is now empty, stop
+        if self.is_empty():
+            return
+
+        current = self.head
+
+        # Check the rest of the list
+        while current.next is not None:
+            if current.next.data == value:
+
+                # If the node being removed is the tail, update tail
+                if current.next == self.tail:
+                    self.tail = current
+
+                current.next = current.next.next
+                self.count -= 1
+
+            else:
+                current = current.next
+
+    def display_reverse_nr(self):
+        # Displays the list in reverse order without using recursion
+        stack = []
+
+        current = self.head
+
+        # Push each node's data onto the stack
+        while current is not None:
+            stack.append(current.data)
+            current = current.next
+
+        print("None", end="")
+
+        # Pop items from the stack to print in reverse order
+        while len(stack) > 0:
+            print(f" <- {stack.pop()}", end="")
+
+        print(" <- Head")
 
 # Test to delete specific nodes
 if __name__ == "__main__":
     my_list = SinglyLinkedList()
 
-    print("---- Build a forward list ----")
-    my_list.build_list_forward([10, 20, 30, 40, 50])
+    print("---- Remove all test ----")
+    my_list.build_list_forward([1, 2, 4, 6, 1, 3, 6])
     my_list.display()
 
-    print("Delete the first node:")
-    my_list.delete_first()
+    print("Removing 1 and all duplicates:")
+    my_list.remove_all(1)
     my_list.display()
 
-    print("Delete the last node:")
-    my_list.delete_last()
+    print("Removing 6 and all duplicates:")
+    my_list.remove_all(6)
     my_list.display()
 
-    print("Delete an interior node (30):")
-    my_list.delete(30)
-    my_list.display()
+    print("---- Non-recursive reverse print test ----")
+    reverse_list = SinglyLinkedList()
+    reverse_list.build_list_forward([10, 20, 30, 40, 50])
+    reverse_list.display()
+    reverse_list.display_reverse_nr()
