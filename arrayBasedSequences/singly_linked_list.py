@@ -182,22 +182,64 @@ class SinglyLinkedList:
 
 # Test to delete specific nodes
 if __name__ == "__main__":
-    my_list = SinglyLinkedList()
 
-    print("---- Remove all test ----")
-    my_list.build_list_forward([1, 2, 4, 6, 1, 3, 6])
-    my_list.display()
+    print("---- Build a forward list ----")
+    forward_list = SinglyLinkedList()
+    forward_list.build_list_forward([10, 20, 30, 40, 50])
+    forward_list.display()
 
-    print("Removing 1 and all duplicates:")
-    my_list.remove_all(1)
-    my_list.display()
+    print("Delete the first node:", end=" ")
+    forward_list.delete_first()
+    forward_list.display()
 
-    print("Removing 6 and all duplicates:")
-    my_list.remove_all(6)
-    my_list.display()
+    print("Delete the last node:", end=" ")
+    forward_list.delete_last()
+    forward_list.display()
+
+    print("Delete the interior node:", end=" ")
+    forward_list.delete(30)
+    forward_list.display()
+
+    print()
+
+    print("---- Build a backward list ----")
+    backward_list = SinglyLinkedList()
+    backward_list.build_list_backward([10, 20, 30, 40, 50])
+    backward_list.display()
+
+    print("Delete the first node:", end=" ")
+    backward_list.delete_first()
+    backward_list.display()
+
+    print("Delete the last node:", end=" ")
+    backward_list.delete_last()
+    backward_list.display()
+
+    print("Delete the interior node:", end=" ")
+    backward_list.delete(30)
+    backward_list.display()
+
+    print()
 
     print("---- Non-recursive reverse print test ----")
     reverse_list = SinglyLinkedList()
     reverse_list.build_list_forward([10, 20, 30, 40, 50])
+    print("Insertion order:", end=" ")
     reverse_list.display()
+    print("Reverse order (non-recursive):", end=" ")
     reverse_list.display_reverse_nr()
+
+    print()
+
+    print("---- Remove all test ----")
+    remove_list = SinglyLinkedList()
+    remove_list.build_list_forward([1, 2, 4, 6, 1, 3, 6])
+    remove_list.display()
+
+    print("Removing 1 and all duplicates:", end=" ")
+    remove_list.remove_all(1)
+    remove_list.display()
+
+    print("Removing 6 and all duplicates:", end=" ")
+    remove_list.remove_all(6)
+    remove_list.display()
